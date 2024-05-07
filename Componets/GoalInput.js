@@ -14,7 +14,7 @@ function goalInput({onAddGoal}) {
         console.log('addGoalHandler')
     }
     return(
-        <View style={StyleSheet.inputContainer}>
+        <View style={Styles.inputContainer}>
             <TextInput
             style={StyleSheet.TextInput}
             placeholder="your goal!"
