@@ -1,25 +1,28 @@
-import {
-    StyleSheet, View, text, Pressble
-} from "react-native"
-function goalsItem({itemdata, ondeleteitem}){
+import { StyleSheet, View, Text,Pressable } from "react-native";
+
+function GoalItem({itemdata, OnDeleteItem}){
+    console.log('item data: ',itemdata)
+    console.log('hola')
     return(
-        <Pressble>
-            <view style={style.goalItem}>
-                <text style={style.goaltext}>{itemdata.item}
-                </text>
+        <Pressable onPress={OnDeleteItem}>
+            <view style={styles.goalsItem}>
+                <text style={styles.goaltext}>{itemdata.item.text}</text>
             </view>
-        </Pressble>
+        </Pressable>
     )
 }
 
-export default goalsItem
+export default GoalItem
 
 const styles = StyleSheet.create({
     goalItem:{
         margin:8,
-        padding:0,
+        padding:8,
         borderRadius:6,
-        backgroundColor: "00576ff",
+        backgroundColor: "#00576ff",
         color: "white"
     },
+    goaltext: {
+        color: 'white'
+    }
 })
