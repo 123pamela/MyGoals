@@ -14,22 +14,19 @@ function GoalInput({onAddGoal}) {
         console.log('addGoalHandler')
     }
     return(
-        <View style={Styles.inputContainer}>
+        <View style={styles.inputContainer}>
             <TextInput
-            style={StyleSheet.TextInputt}
-            style={Styles.textInput}
+            style={styles.textInput}
             placeholder="your goal!"
             onChangeText={handleInputGoal}
             value={enteredGoalText}
             />
-            <Button
+            <Button 
             title="Add Goal"
-            color={'#A39997'}
+            color={'blue'}
             onPress={addGoalhandler}
 
-            title="add goal"
-            color={'#A3FFD6'}
-            onPress={addGoalHandler}
+
             />
         </View>
     )
@@ -49,8 +46,10 @@ const styles = StyleSheet.create({
     },
     textInput:{
         borderWidth: 1,
-        borderColor: '#F8FF6E',
+        borderColor: '#ccccccc',
         width: '80%',
-        marginRight: ''
+        marginRight: '3',
+        padding: 8,
+        borderRadius:5,
     }
 })

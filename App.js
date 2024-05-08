@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import GoalInput from './Componets/GoalInput';
@@ -9,7 +8,7 @@ export default function App() {
 
 function handleAddGoal(enteredGoalText) {
   console.log (enteredGoalText)
-  setGoals(()=>[...goals, {text: enteredGoalText, key: Math.random().toString()}])
+  setGoals(()=>[...goals, {text: enteredGoalText}])
 }
 
 function hadleDeleteGoal() {
@@ -22,18 +21,17 @@ function hadleDeleteGoal() {
     onAddGoal={handleAddGoal}
     />
     <View style={styles.goalsContiner}>
-      <FlatList
-      data={goals}
-      renderItem={ (itemData) => {
-        return( 
+        <FlatList
+        data={goals}
+        renderItem={ (itemData) => {
         <GoalItem
         itemData={itemData}
-        OnDeLeteItem={handleDeleteAddGoal}
-        />)
+        OnDeLeteItem={hadleDeleteGoal}
+        />
       }}
-
-      key={Math.random().toString()
-      }
+      keyExtractor={(item)=>{
+        return item.id
+      }}
       />
     </View>
   </View>  
@@ -46,7 +44,7 @@ function hadleDeleteGoal() {
       paddingHorizontal:20
     },
 
-    imnputContainer:{
+    inputContainer:{
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'center',
@@ -58,7 +56,7 @@ function hadleDeleteGoal() {
       borderRadius: 20,
       backgraundColor: '#F8FF6E',
     },
-    textImput:{
+    textInput:{
       borderWith: 1,
       borderColor: '#ffffff',
       width: '80%',
@@ -79,7 +77,7 @@ function hadleDeleteGoal() {
     goalsText: {
       color: 'white'
     }
-    
+
 
     }
   );
