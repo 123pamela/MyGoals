@@ -5,38 +5,44 @@ import GoalItem from './Componets/GoalItem';
 
 export default function App() {
   const [goals, setGoals] = useState([])
-
-function handleAddGoal(enteredGoalText) {
-  console.log (enteredGoalText)
-  setGoals(()=>[...goals, {text: enteredGoalText}])
-}
-
-function hadleDeleteGoal() {
-  console.log("DELETE!")
-}
-
+  
+  function handleAddGoal(enteredGoalText) {
+    console.log(enteredGoalText)
+ setGoals(()=>[...goals, {text: enteredGoalText, key: Math.random().toString()}])
+  }
+  
+ function handleDeleteGoal(id){
+  console.log('DELETE')
+  const deleteGoal = goals.filter((goal) => {return goal.key !== id} )
+  setGoals(deleteGoal)
+ }
   return(
-    <View style={styles.container}>
+  <View style={styles.container}>
     <GoalInput
     onAddGoal={handleAddGoal}
     />
     <View style={styles.goalsContiner}>
-        <FlatList
-        data={goals}
-        renderItem={ (itemData) => {
+
+      <FlatList
+      data={goals}
+      renderItem={ (itemData) => {
+        return(
+       // <GoalItem
+        //itemData={itemData}
+        //OnDeleteItem={handleDeleteGoal}
         <GoalItem
         itemData={itemData}
-        OnDeLeteItem={hadleDeleteGoal}
-        />
+        OnDeleteItem={handleDeleteGoal}
+        id={itemData.item.key}
+        />)
       }}
-      keyExtractor={(item)=>{
-        return item.id
-      }}
+
       />
     </View>
   </View>  
   );
 }
+
   const styles = StyleSheet.create({
     container:{
       flex: 1,
@@ -71,13 +77,13 @@ function hadleDeleteGoal() {
       margin: 8,
       padding: 8,
       borderRadius: 6,
-      backgroundColor: '#8576FF',
+      backgroundColor: '#3897493',
       color: 'white'
     },
     goalsText: {
       color: 'white'
     }
-
+    
 
     }
   );
